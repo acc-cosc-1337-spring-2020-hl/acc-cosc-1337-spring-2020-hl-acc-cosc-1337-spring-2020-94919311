@@ -19,7 +19,7 @@ int factorial(int num)
 	int result = 1;
 	int counter = 1;
 
-	while (counter  >= num) {
+	while (counter  <= num) {
 		result = counter * result;
 		counter += 1 ;
 	}
