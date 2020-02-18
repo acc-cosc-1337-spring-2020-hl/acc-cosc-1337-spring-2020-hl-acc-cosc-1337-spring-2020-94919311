@@ -18,7 +18,9 @@ TEST_CASE("verify the main of 03 module") {
 	
 	pass_by_val_and_ref(num1, num2);
 
-	REQUIRE(num1 = 5);
-	REQUIRE(num2 = 10);
+	REQUIRE(num1 == 5);
+	REQUIRE(num2 == 10);
 
 }
+
+TEST_CASE()
