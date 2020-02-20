@@ -12,12 +12,12 @@ Return quotient.
 
 double get_gc_content(const string& dna)
 {
-	double sum = 0
-		for (int i = 0; i < dna.length(); i++)
-		{
-			if (dna[i] == 'C' || dna[i] == 'G')
-		}
-	resturn sum / dna.length();
+	double sum = 0;
+	for (int i = 0; i < dna.length(); i++)
+	{
+		if (dna[i] == 'C' || dna[i] == 'G')
+	}
+	return sum / dna.length();
 }
 //how can I divide length? 
 
@@ -31,7 +31,7 @@ string get_reverse_string(string str)
 	int n = str.length();
 
 
-	for (int = 0; i < n / 2; i++)
+	for (int i = 0; i < n / 2; i++)
 	{
 		{
 			swap(str[i], str[n - i - 1]);
