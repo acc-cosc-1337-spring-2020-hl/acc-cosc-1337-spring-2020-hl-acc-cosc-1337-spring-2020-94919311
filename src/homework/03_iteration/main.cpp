@@ -1,9 +1,9 @@
 //write include statements
-#inlcude <iostream>
+#include <iostream>
 #include"dna.h"
 
 //write using statements
-using std::cout; using std::cout; using std::string;
+using std::cout; using std::cin; using std::string;
 
 /*
 Write code that prompts user to enter 1 for Get GC Content,
@@ -36,12 +36,12 @@ int main()
 			string complement = get_dna_complement(dna);
 			cout << "\n the complement is: " << complement << "\n";
 		}
+		cout << "\n enter Y to try again\n";
+		cin >> program_runs;
+		
 
-	}
-	cout << "\n enter Y to try again\n";
-	cin >> program_runs;
-	while (program_runs == 'Y' || program_runs == 'y')
-
+	} while (program_runs == 'Y' || program_runs == 'y');
+	
 		return 0;
 }
 

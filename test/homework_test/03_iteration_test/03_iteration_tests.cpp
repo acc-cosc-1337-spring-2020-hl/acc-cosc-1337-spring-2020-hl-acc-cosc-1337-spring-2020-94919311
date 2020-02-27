@@ -12,7 +12,7 @@ TEST_CASE("Reverse") {
 }
 TEST_CASE("get_complement") {
 	REQUIRE(get_dna_complement("AAAACCCGGT") == "ACCGGGTTTT");
-	REQUIRE(get_dna_complement("CCCGGAAAAT") == "ATTTTCGGG);
+	REQUIRE(get_dna_complement("CCCGGAAAAT") == "ATTTTCGGG");
 
 }
 TEST_CASE("get_GC_content") {

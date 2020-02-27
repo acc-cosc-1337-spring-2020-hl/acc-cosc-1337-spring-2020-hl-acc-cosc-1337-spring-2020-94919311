@@ -16,6 +16,7 @@ double get_gc_content(const string& dna)
 	for (int i = 0; i < dna.length(); i++)
 	{
 		if (dna[i] == 'C' || dna[i] == 'G')
+			sum++;
 	}
 	return sum / dna.length();
 }
@@ -77,6 +78,6 @@ string  get_dna_complement(string dna)
 		}
 
 	}
-	return reversed_str();
+	return reversed_str;
 }
 
