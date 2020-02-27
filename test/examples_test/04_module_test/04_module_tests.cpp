@@ -15,9 +15,8 @@ TEST_CASE("Test Bank Account get_balance") {
 TEST_CASE("Test BankAccount::deposit()") {
 	BankAccount account(150);
 	REQUIRE(account.get_balance() == 150);
-
-	account.deposit(50);
-
+	REQUIRE_THROWS_AS(account.deposit(-50),
+		InvalidAmount);
 	REQUIRE(account.get_balance == 200);
 }
 
@@ -28,7 +27,7 @@ TEST_CASE("Test BankAccount::withdraw()") {
 	account.withdraw(50);
 	REQUIRE(account.get_balance() == 100);
 
-	account.withdraw(101);
-	REQUIRE(account.get_balance() == 100);
-
+	
+	REQUIRE_THROWS_AS(account.withdraw(101),
+		InvalidAmount);
 }

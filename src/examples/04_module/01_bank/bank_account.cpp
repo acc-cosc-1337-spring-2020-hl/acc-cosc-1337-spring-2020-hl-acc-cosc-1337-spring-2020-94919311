@@ -9,11 +9,23 @@ void BankAccount::deposit(int amount)
 	{ 
 		balance = +amount;
 	}
+	else
+	{
+		throw InvalidAmount("\nAmount must be greater than 0. \n");
+	}
 }
 
 void BankAccount::withdraw(int amount)
 {
-	if (amount > 0 && balance-amount > 0)
+	if (amount <= 0)
+	{
+		throw InvalidAmount("\nAmount must be greater than 0.");
+	}
+	else if(balance - amount < 0)
+	{
+		throw InvalidAmount("\n Insufficient funds. \n");
+	}
+	else
 	{
 		balance -= amount;
 	}
