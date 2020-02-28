@@ -13,7 +13,7 @@ Program continues until user decides to exit.
 
 
 using std::cout;
-using std::cin;
+using std::cin; using std::vector;
 
 int main()
 {
@@ -33,7 +33,7 @@ int main()
 		{
 		case 1:
 
-			cout << "Maximum value in teh vector is " << get_max_from_vector(numbers) << endl << endl;
+			cout << "Maximum value in teh vector is " << get_max_from_vector(numbers) << std::endl << std::endl;
 
 			break;
 		case 2:

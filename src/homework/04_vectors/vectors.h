@@ -7,7 +7,7 @@ const reference vector of ints parameter that returns an int
 */
 #include<vector>
 
-int get_max_from_vector(const vector<int> &numbers);
+int get_max_from_vector(const std::vector<int> &numbers);
 
 /*
 Write a function prototype named is_prime with an integer parameter 
@@ -28,4 +28,4 @@ the number
 @return vector of ints containing prime values up to a value
 */
 
-int vector_of_primes(int num);
+std::vector<int> vector_of_primes(int num);
