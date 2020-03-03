@@ -31,3 +31,11 @@ TEST_CASE("Test BankAccount::withdraw()") {
 	REQUIRE_THROWS_AS(account.withdraw(101),
 		InvalidAmount);
 }
+
+TEST_CASE("Test default constructor open account") {
+
+	BankAccount account;
+	account.deposit(25);
+	REQUIRE(account.get_balance() == 25);
+
+}
