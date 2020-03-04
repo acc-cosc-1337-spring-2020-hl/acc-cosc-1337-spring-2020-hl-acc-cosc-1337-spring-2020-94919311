@@ -8,7 +8,7 @@ class TicTacToe
 public:
 	void mark_board(int position);
 	void start_game(string first_player);
-	string get_player() const { return player };
+	string get_player() const { return player; }
 private:
 	void set_next_player();
 	string player;

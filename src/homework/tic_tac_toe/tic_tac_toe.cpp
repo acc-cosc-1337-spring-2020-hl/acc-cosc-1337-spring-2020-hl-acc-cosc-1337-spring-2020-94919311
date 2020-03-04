@@ -16,7 +16,7 @@ void TicTacToe::start_game(string first_player)
 
 void TicTacToe::mark_board(int position)
 {
-	while (position != 1 && 2 && 3 && 4 && 5 && 6 && 7 && 8 && 9)
+	if (position < 1 || position > 9)
 	{
 		throw Error("Position must be 1 to 9");
 	}
