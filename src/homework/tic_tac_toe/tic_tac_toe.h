@@ -1,6 +1,6 @@
 //h
 #include<iostream>
-
+#include<string>
 using std::string;
 
 class TicTacToe
@@ -18,7 +18,7 @@ class Error
 {
 public:
 	Error(string msg) : message{ msg } {};
-	string get_message(string message) const { return message; };
+	string get_message() const { return message; }
 private:
 	string message;
 };

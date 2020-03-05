@@ -21,7 +21,7 @@ int main()
 	vector<Rect> areas{Rect(4, 5), Rect(10, 10), Rect(100, 10)};
 	for (auto r : areas)
 	{ 
-		cout << r.get_area() << "\n";
+		cout << r << "\n";
 		all_areas += r.get_area();
 	}
 
