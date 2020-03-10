@@ -33,5 +33,6 @@ int main()
 		}
 		cout << "Enter '1' to continue with the game or '2' to finish.\n";
 	}
+
 	return 0;
 }

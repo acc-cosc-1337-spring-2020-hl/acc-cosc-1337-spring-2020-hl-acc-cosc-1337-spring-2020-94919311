@@ -1,9 +1,16 @@
 #include "bank_account.h"
+#include "checking_account.h"
 #include<vector>
+
 using std::cout;
 using std::vector;
+
 int main()
 {
+	CheckingAccount a(50), b(10);
+
+	// BankAccount c = A + b;
+
 	BankAccount a(50), b(10);
 	display_balance(a);
 	cout << a;
