@@ -71,6 +71,75 @@ void TicTacToe::clear_board()
 	}
 }
 
+void TicTacToe::set_winner()
+{
+	if (player == "X")
+	{
+		winner = "O";
+	}
+	else
+	{
+		winner = "X";
+	}
+}
+
+bool TicTacToe::check_row_win()
+{
+
+	if (pegs[0] == player && pegs[1] == player && pegs[2] == player)
+	{
+		return true;
+	}
+	else if (pegs[3] == player && pegs[4] == player && pegs[5] == player)
+	{
+		return true;
+	}
+	else if (pegs[6] == player && pegs[7] == player && pegs[8] == player)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool TicTacToe::check_column_win()
+{
+	if (pegs[0] == player && pegs[3] == player && pegs[6] == player)
+	{
+		return true;
+	}
+	else if (pegs[1] == player && pegs[4] == player && pegs[7] == player)
+	{
+		return true;
+	}
+	else if (pegs[2] == player && pegs[5] == player && pegs[8] == player)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool TicTacToe::check_diagonal_win()
+{
+	if (pegs[0] == player && pegs[4] == player && pegs[8] == player)
+	{
+		return true;
+	}
+	else if (pegs[6] == player && pegs[4] == player && pegs[2] == player)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 void TicTacToe::display_board() const
 {
 	for (int i = 0; i < 9; i += 3)

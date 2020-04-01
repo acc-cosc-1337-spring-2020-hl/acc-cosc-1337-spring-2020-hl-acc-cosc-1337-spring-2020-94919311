@@ -18,9 +18,9 @@ int main()
 	catch (Error e){
 
 		cout << e.get_message();
-	}
+	} 
 
-	int option;
+	int option = 1;
 	int position;
 	while (option == 1) {
 		cout << "Please enter a position\n";
