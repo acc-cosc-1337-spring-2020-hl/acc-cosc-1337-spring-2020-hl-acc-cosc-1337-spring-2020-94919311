@@ -29,14 +29,14 @@ int main()
 		while (!game.game_over())
 		{
 			cout << "Please enter a position \n";
-			cin >> position;
+			cin >> position; // should be cin >> game; ?
 			try {
 				game.mark_board(position);
 			}
 			catch (Error e) {
 				cout << e.get_message();
 			}
-			game.display_board();
+			game.display_board(); // should be cout << game; ?
 		}
 		cout << "\nThe winner is: " <<game.get_winner()<< "\n" ;
 		cout << "Enter '1' to continue with the game or '2' to finish.\n";

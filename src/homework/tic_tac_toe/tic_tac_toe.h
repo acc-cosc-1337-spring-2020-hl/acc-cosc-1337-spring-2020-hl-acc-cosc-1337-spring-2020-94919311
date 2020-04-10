@@ -10,17 +10,20 @@ class TicTacToe
 public:
 	bool game_over();
 	void mark_board(int position);
+	void display_board(); // doesn't appear on the UML Diagram but later is says to use it
 	void start_game(string first_player);
-	string get_player() const { return player; }
-	void display_board() const;
+	string get_player() const { return next_player; }
 	string get_winner() { return winner; }
+	friend std::ostream& operator << (std::ostream& out, const TicTacToe& game); // ?
+	friend std::istream& operator >> (std::istream& in, TicTacToe& game); // ?
+protected:
+	std::vector<string> pegs{ 9, " " };
+	string winner;
+	string next_player;
 private:
 	bool check_board_full();
 	void set_next_player();
-	string player;
-	std::vector<string> pegs{ 9, " " };
 	void clear_board();
-	string winner;
 	void set_winner();
 	bool check_row_win();
 	bool check_column_win();
@@ -35,3 +38,5 @@ public:
 private:
 	string message;
 };
+
+

@@ -10,7 +10,7 @@ void TicTacToe::start_game(string first_player)
 	}
 	else
 	{
-		player = first_player;
+		next_player = first_player;
 	}
 	clear_board();
 }
@@ -21,27 +21,39 @@ void TicTacToe::mark_board(int position)
 	{
 		throw Error("Position must be 1 to 9\n");
 	}
-	else if (player == "")
+	else if (next_player == "")
 	{
 		throw Error("Must start game first\n");
 	}
 	else
 	{
-		pegs[position - 1] = player;
+		pegs[position - 1] = next_player;
+		if (!game_over())
+		{
+			set_next_player();
+		}
 	}
 	set_next_player();
+}
+
+void TicTacToe::display_board()
+{
+	for (int i = 0; i < 9; i += 3)
+	{
+		cout << pegs[1] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << "\n";
+	}
 }
 
 
 void TicTacToe::set_next_player()
 {
-	if (player == "X")
+	if (next_player == "X")
 	{
-		player = "O";
+		next_player = "O";
 	}
 	else
 	{
-		player = "X";
+		next_player = "X";
 	}
 }
 
@@ -91,7 +103,7 @@ void TicTacToe::clear_board()
 
 void TicTacToe::set_winner()
 {
-	if (player == "X")
+	if (next_player == "X")
 	{
 		winner = "O";
 	}
@@ -190,11 +202,18 @@ bool TicTacToe::check_diagonal_win()
 	}
 }
 
-void TicTacToe::display_board() const
-{
-	for (int i = 0; i < 9; i += 3)
-	{
-		cout << pegs[i] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << "\n";
-	}
 
+std::ostream & operator<<(std::ostream & out, const TicTacToe & game)
+{
+	// don't really what to do
+	out << game.display_board();
+	return out;
+}
+
+std::istream & operator>>(std::istream & in, TicTacToe & game)
+{
+	// same here
+
+
+	return in;
 }
