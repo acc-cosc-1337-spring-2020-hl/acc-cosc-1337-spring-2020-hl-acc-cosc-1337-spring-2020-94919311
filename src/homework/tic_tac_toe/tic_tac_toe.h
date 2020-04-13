@@ -3,6 +3,10 @@
 #include<string>
 #include<vector>
 
+#ifndef TIC_TAC_TOE_H
+#define TIC_TAC_TOE_H
+
+
 using std::string;
 using std::cout;
 class TicTacToe
@@ -10,7 +14,6 @@ class TicTacToe
 public:
 	bool game_over();
 	void mark_board(int position);
-	void display_board(); // doesn't appear on the UML Diagram but later is says to use it
 	void start_game(string first_player);
 	string get_player() const { return next_player; }
 	string get_winner() { return winner; }
@@ -40,3 +43,4 @@ private:
 };
 
 
+#endif // !TIC_TAC_TOE_H

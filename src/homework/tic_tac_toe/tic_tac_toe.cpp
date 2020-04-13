@@ -33,17 +33,8 @@ void TicTacToe::mark_board(int position)
 			set_next_player();
 		}
 	}
-	set_next_player();
+	
 }
-
-void TicTacToe::display_board()
-{
-	for (int i = 0; i < 9; i += 3)
-	{
-		cout << pegs[1] << "|" << pegs[i + 1] << "|" << pegs[i + 2] << "\n";
-	}
-}
-
 
 void TicTacToe::set_next_player()
 {
@@ -205,15 +196,20 @@ bool TicTacToe::check_diagonal_win()
 
 std::ostream & operator<<(std::ostream & out, const TicTacToe & game)
 {
-	// don't really what to do
-	out << game.display_board();
+	for (int i = 0; i < 9; i += 3)
+	{
+		out << game.pegs[i] << "|" << game.pegs[i + 1] << "|" << game.pegs[i + 2] << "\n";
+	}
+
 	return out;
 }
 
 std::istream & operator>>(std::istream & in, TicTacToe & game)
 {
-	// same here
-
+	int loc;
+	cout << "Enter position: ";
+	std::cin >> loc;
+	game.mark_board(loc);
 
 	return in;
 }

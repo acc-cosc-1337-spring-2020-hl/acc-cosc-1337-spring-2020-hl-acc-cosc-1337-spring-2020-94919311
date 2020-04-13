@@ -7,6 +7,13 @@ void TicTacToeManager::save_game(TicTacToe b)
 
 }
 
+void TicTacToeManager::get_winner_totals(int & x, int & o, int & t)
+{
+	x = x_win;
+	o = o_win;
+	t = tie;
+}
+
 void TicTacToeManager::update_winner_count(string)
 {
 	if (winner == "X")
@@ -25,5 +32,10 @@ void TicTacToeManager::update_winner_count(string)
 
 std::ostream & operator<<(std::ostream & out, const TicTacToeManager & manager)
 {
-	// TODO: insert return statement here
+	for (auto game : manager.games) 
+	{
+		out << game;
+	}
+
+	return out;
 }
