@@ -1,5 +1,10 @@
 #include "tic_tac_toe.h"
 #include "tic_tac_toe_manager.h"
+#include "tic_tac_toe_3.h"
+#include "tic_tac_toe_4.h"
+#include <vector>
+#include<functional>
+
 
 using std::cout;
 using std::cin;
@@ -9,34 +14,68 @@ int main()
 {
 	int option = 1;
 	int position;
-	TicTacToeManager manager;
+	TicTacToeManager manager; // I dont't know why I keep gettin an error here
+	std::vector < std::reference_wrapper<TicTacToe>> games;
 
 	while (option == 1)
 	{
+		int type = 0;
+		cout << "Do you want to play tictactoe 3 or 4? " << "\n";
+		cin >> type;
 		string first_player;
-		TicTacToe game;
-		while (!(first_player == "O" || first_player == "X"))
+		if (type = 3)
 		{
-			try {
-				cout << "Please choose one: 'X' or 'O'\n";
-				cin >> first_player;
-				game.start_game(first_player);
-			}
-			catch (Error e) {
+			TicTacToe3 game;
+			while (!(first_player == "O" || first_player == "X"))
+			{
+				try {
+					cout << "Please choose one: 'X' or 'O'\n";
+					cin >> first_player;
+					game.start_game(first_player);
+				}
+				catch (Error e) {
 
-				cout << e.get_message();
+					cout << e.get_message();
+				}
+			}
+
+			while (!game.game_over())
+			{
+				try {
+					cin >> game; // should be cin >> game; ?
+				}
+				catch (Error e) {
+					cout << e.get_message();
+				}
+				cout << game;
 			}
 		}
-
-		while (!game.game_over())
+		else
 		{
-			try {
-				cin >> game; // should be cin >> game; ?
+			TicTacToe4 game;
+			while (!(first_player == "O" || first_player == "X"))
+			{
+				try {
+					cout << "Please choose one: 'X' or 'O'\n";
+					cin >> first_player;
+					game.start_game(first_player);
+				}
+				catch (Error e) {
+
+					cout << e.get_message();
+				}
 			}
-			catch (Error e) {
-				cout << e.get_message();
+
+			while (!game.game_over())
+			{
+				try {
+					cin >> game; // should be cin >> game; ?
+				}
+				catch (Error e) {
+					cout << e.get_message();
+				}
+				cout << game;
 			}
-			cout << game;
 		}
 
 		manager.save_game(game);
@@ -46,7 +85,6 @@ int main()
 	}
 
 	cout << manager<<"\n\n";
-
 	int x, o, t;
 	manager.get_winner_totals(x, o, t);
 	cout << "Winners: \n";

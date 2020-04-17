@@ -12,25 +12,26 @@ using std::cout;
 class TicTacToe
 {
 public:
+	TicTacToe(int size) : pegs{ size*size, " " } {};
 	bool game_over();
 	void mark_board(int position);
 	void start_game(string first_player);
 	string get_player() const { return next_player; }
 	string get_winner() { return winner; }
-	friend std::ostream& operator << (std::ostream& out, const TicTacToe& game); // ?
-	friend std::istream& operator >> (std::istream& in, TicTacToe& game); // ?
+	friend std::ostream& operator << (std::ostream& out, const TicTacToe& game); 
+	friend std::istream& operator >> (std::istream& in, TicTacToe& game); 
 protected:
-	std::vector<string> pegs{ 9, " " };
+	std::vector<string> pegs;
 	string winner;
 	string next_player;
+	virtual bool check_row_win() { return false; }
+	virtual bool check_column_win() { return false; }
+	virtual bool check_diagonal_win() { return false; }
 private:
 	bool check_board_full();
 	void set_next_player();
 	void clear_board();
 	void set_winner();
-	bool check_row_win();
-	bool check_column_win();
-	bool check_diagonal_win();
 };
 
 class Error
