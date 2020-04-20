@@ -4,6 +4,7 @@
 void TicTacToeManager::save_game(TicTacToe b)
 {
 	games.push_back(b);
+	update_winner_count(b.get_winner());
 
 }
 
@@ -14,7 +15,7 @@ void TicTacToeManager::get_winner_totals(int & x, int & o, int & t)
 	t = tie;
 }
 
-void TicTacToeManager::update_winner_count(string)
+void TicTacToeManager::update_winner_count(string winner)
 {
 	if (winner == "X")
 	{

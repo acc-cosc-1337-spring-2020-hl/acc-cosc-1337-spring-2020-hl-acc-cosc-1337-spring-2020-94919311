@@ -3,7 +3,7 @@
 #include "tic_tac_toe.h"
 #include <functional>
 
-class TicTacToeManager : public TicTacToe
+class TicTacToeManager 
 {
 public:
 	void save_game(TicTacToe b);

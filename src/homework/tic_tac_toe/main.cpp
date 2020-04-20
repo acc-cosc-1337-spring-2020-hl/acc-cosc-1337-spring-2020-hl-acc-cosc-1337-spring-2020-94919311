@@ -25,13 +25,14 @@ int main()
 		string first_player;
 		if (type = 3)
 		{
-			TicTacToe3 game;
+			TicTacToe3 game1;
+			std::reference_wrapper<TicTacToe> game = game1;
 			while (!(first_player == "O" || first_player == "X"))
 			{
 				try {
 					cout << "Please choose one: 'X' or 'O'\n";
 					cin >> first_player;
-					game.start_game(first_player);
+					game.get().start_game(first_player);
 				}
 				catch (Error e) {
 
@@ -39,26 +40,31 @@ int main()
 				}
 			}
 
-			while (!game.game_over())
+			while (!game.get().game_over())
 			{
 				try {
-					cin >> game; // should be cin >> game; ?
+					cin >> game.get(); // should be cin >> game; ?
 				}
 				catch (Error e) {
 					cout << e.get_message();
 				}
-				cout << game;
+				cout << game.get();
 			}
+
+			manager.save_game(game);
+			cout << "\nThe winner is: " << game.get().get_winner() << "\n";
 		}
 		else
 		{
-			TicTacToe4 game;
+			TicTacToe4 game1;
+			std::reference_wrapper<TicTacToe> game = game1;
+
 			while (!(first_player == "O" || first_player == "X"))
 			{
 				try {
 					cout << "Please choose one: 'X' or 'O'\n";
 					cin >> first_player;
-					game.start_game(first_player);
+					game.get().start_game(first_player);
 				}
 				catch (Error e) {
 
@@ -66,20 +72,21 @@ int main()
 				}
 			}
 
-			while (!game.game_over())
+			while (!game.get().game_over())
 			{
 				try {
-					cin >> game; // should be cin >> game; ?
+					cin >> game.get(); // should be cin >> game; ?
 				}
 				catch (Error e) {
 					cout << e.get_message();
 				}
-				cout << game;
+				cout << game.get();
 			}
-		}
 
-		manager.save_game(game);
-		cout << "\nThe winner is: " <<game.get_winner()<< "\n" ;
+			manager.save_game(game);
+			cout << "\nThe winner is: " << game.get().get_winner() << "\n";
+		}
+		
 		cout << "Enter '1' to continue with the game or '2' to finish.\n";
 		cin >> option;
 	}
