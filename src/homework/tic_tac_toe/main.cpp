@@ -4,7 +4,7 @@
 #include "tic_tac_toe_4.h"
 #include <vector>
 #include<functional>
-
+#include<memory>
 
 using std::cout;
 using std::cin;
@@ -14,7 +14,7 @@ int main()
 {
 	int option = 1;
 	int position;
-	TicTacToeManager manager; // I dont't know why I keep gettin an error here
+	std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>(); 
 	std::vector < std::reference_wrapper<TicTacToe>> games;
 
 	while (option == 1)
@@ -25,14 +25,13 @@ int main()
 		string first_player;
 		if (type = 3)
 		{
-			TicTacToe3 game1;
-			std::reference_wrapper<TicTacToe> game = game1;
+			std::unique_ptr<TicTacToe> board = std::make_unique<TicTacToe3>();
 			while (!(first_player == "O" || first_player == "X"))
 			{
 				try {
 					cout << "Please choose one: 'X' or 'O'\n";
 					cin >> first_player;
-					game.get().start_game(first_player);
+					board->start_game(first_player);
 				}
 				catch (Error e) {
 
@@ -40,31 +39,31 @@ int main()
 				}
 			}
 
-			while (!game.get().game_over())
+			while (!board->game_over())
 			{
+				
 				try {
-					cin >> game.get(); // should be cin >> game; ?
+					cin >> board->mark_board(); // don't remember what should be here
 				}
 				catch (Error e) {
 					cout << e.get_message();
 				}
-				cout << game.get();
+				cout << board->get(); // same here
 			}
 
-			manager.save_game(game);
-			cout << "\nThe winner is: " << game.get().get_winner() << "\n";
+			manager->save_game(board);
+			cout << "\nThe winner is: " << board->get_winner() << "\n";
 		}
 		else
 		{
-			TicTacToe4 game1;
-			std::reference_wrapper<TicTacToe> game = game1;
+			std::unique_ptr<TicTacToe> board = std::make_unique<TicTacToe4>();
 
 			while (!(first_player == "O" || first_player == "X"))
 			{
 				try {
 					cout << "Please choose one: 'X' or 'O'\n";
 					cin >> first_player;
-					game.get().start_game(first_player);
+					board->start_game(first_player);
 				}
 				catch (Error e) {
 
@@ -72,19 +71,19 @@ int main()
 				}
 			}
 
-			while (!game.get().game_over())
+			while (!board->game_over())
 			{
 				try {
-					cin >> game.get(); // should be cin >> game; ?
+					cin >> board->; // same here
 				}
 				catch (Error e) {
 					cout << e.get_message();
 				}
-				cout << game.get();
+				cout << game.get(); // same here
 			}
 
-			manager.save_game(game);
-			cout << "\nThe winner is: " << game.get().get_winner() << "\n";
+			manager->save_game(board);
+			cout << "\nThe winner is: " << board->get_winner() << "\n";
 		}
 		
 		cout << "Enter '1' to continue with the game or '2' to finish.\n";
@@ -93,7 +92,7 @@ int main()
 
 	cout << manager<<"\n\n";
 	int x, o, t;
-	manager.get_winner_totals(x, o, t);
+	manager->get_winner_totals(x, o, t);
 	cout << "Winners: \n";
 	cout << "X" << x <<"\n";
 	cout << "O" << o << "\n";
