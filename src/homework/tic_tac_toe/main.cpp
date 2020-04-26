@@ -59,6 +59,8 @@ int main()
 		cout << "\nThe winner is: " << board->get_winner() << "\n";
 		manager->save_game(board);
 		
+		cout << "Play again?";
+		cin >> option;
 	}
 
 	cout << *manager<<"\n\n";
