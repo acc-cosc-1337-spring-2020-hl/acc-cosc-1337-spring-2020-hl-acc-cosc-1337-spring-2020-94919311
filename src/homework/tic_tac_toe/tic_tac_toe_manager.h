@@ -2,6 +2,7 @@
 
 #include "tic_tac_toe.h"
 #include <memory>
+#include<string>
 
 class TicTacToeManager 
 {
@@ -15,6 +16,6 @@ protected:
 	int tie{ 0 };
 	std::vector <std::unique_ptr<TicTacToe>> games; 
 private:
-	void update_winner_count(string);
+	void update_winner_count(std::string);
 
 };

@@ -15,7 +15,7 @@ int main()
 	int option = 1;
 	int position;
 	std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>(); 
-	std::vector < std::reference_wrapper<TicTacToe>> games;
+	std::unique_ptr<TicTacToe> board;
 
 	while (option == 1)
 	{
@@ -25,72 +25,43 @@ int main()
 		string first_player;
 		if (type = 3)
 		{
-			std::unique_ptr<TicTacToe> board = std::make_unique<TicTacToe3>();
-			while (!(first_player == "O" || first_player == "X"))
-			{
-				try {
-					cout << "Please choose one: 'X' or 'O'\n";
-					cin >> first_player;
-					board->start_game(first_player);
-				}
-				catch (Error e) {
-
-					cout << e.get_message();
-				}
-			}
-
-			while (!board->game_over())
-			{
-				
-				try {
-					cin >> board->mark_board(); // don't remember what should be here
-				}
-				catch (Error e) {
-					cout << e.get_message();
-				}
-				cout << board->get(); // same here
-			}
-
-			manager->save_game(board);
-			cout << "\nThe winner is: " << board->get_winner() << "\n";
+			board = std::make_unique<TicTacToe3>();
 		}
-		else
+		else 
 		{
-			std::unique_ptr<TicTacToe> board = std::make_unique<TicTacToe4>();
-
-			while (!(first_player == "O" || first_player == "X"))
-			{
-				try {
-					cout << "Please choose one: 'X' or 'O'\n";
-					cin >> first_player;
-					board->start_game(first_player);
-				}
-				catch (Error e) {
-
-					cout << e.get_message();
-				}
-			}
-
-			while (!board->game_over())
-			{
-				try {
-					cin >> board->; // same here
-				}
-				catch (Error e) {
-					cout << e.get_message();
-				}
-				cout << game.get(); // same here
-			}
-
-			manager->save_game(board);
-			cout << "\nThe winner is: " << board->get_winner() << "\n";
+			board = std::make_unique<TicTacToe4>();
 		}
+		while (!(first_player == "O" || first_player == "X"))
+		{
+			try {
+				cout << "Please choose one: 'X' or 'O'\n";
+				cin >> first_player;
+				board->start_game(first_player);
+			}
+			catch (Error e) {
+
+				cout << e.get_message();
+			}
+		}
+
+		while (!board->game_over())
+		{
+
+			try {
+				cin >> *board; // don't remember what should be here
+			}
+			catch (Error e) {
+				cout << e.get_message();
+			}
+			cout << *board; // same here
+		}
+
+		cout << "\nThe winner is: " << board->get_winner() << "\n";
+		manager->save_game(board);
 		
-		cout << "Enter '1' to continue with the game or '2' to finish.\n";
-		cin >> option;
 	}
 
-	cout << manager<<"\n\n";
+	cout << *manager<<"\n\n";
 	int x, o, t;
 	manager->get_winner_totals(x, o, t);
 	cout << "Winners: \n";
