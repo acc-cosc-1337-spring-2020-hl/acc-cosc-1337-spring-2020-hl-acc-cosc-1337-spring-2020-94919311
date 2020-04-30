@@ -48,12 +48,12 @@ int main()
 		{
 
 			try {
-				cin >> *board; // don't remember what should be here
+				cin >> *board; 
 			}
 			catch (Error e) {
 				cout << e.get_message();
 			}
-			cout << *board; // same here
+			cout << *board; 
 		}
 
 		cout << "\nThe winner is: " << board->get_winner() << "\n";
@@ -70,6 +70,9 @@ int main()
 	cout << "X" << x <<"\n";
 	cout << "O" << o << "\n";
 	cout << "T" << t << "\n";
+
+	TicTacToeData data;
+	TicTacToeManager(data);
 
 	return 0;
 }
