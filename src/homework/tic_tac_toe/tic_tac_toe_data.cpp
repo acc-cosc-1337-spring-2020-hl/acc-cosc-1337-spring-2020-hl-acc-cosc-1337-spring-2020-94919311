@@ -15,7 +15,7 @@ void TicTacToeData::save_pegs(const std::vector<std::unique_ptr<TicTacToe>>& gam
 		{
 			file_out << peg;
 		}
-		game->get_winner();
+		file_out<<game->get_winner();
 		file_out << "\n";
 	}
 
@@ -41,7 +41,7 @@ std::vector<std::unique_ptr<TicTacToe>> TicTacToeData::get_games()
 				std::string chstring(1, line[ch]);
 				pegs.push_back(chstring);
 			}
-			std::string winner = pegs[-1];
+			std::string winner = std::string(1, line.back());
 			std::unique_ptr<TicTacToe> board;
 
 			if (pegs.size() == 9)

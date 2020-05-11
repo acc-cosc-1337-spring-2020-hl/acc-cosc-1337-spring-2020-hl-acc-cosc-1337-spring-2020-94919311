@@ -14,7 +14,8 @@ int main()
 {
 	int option = 1;
 	int position;
-	std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>(); 
+	TicTacToeData data;
+	std::unique_ptr<TicTacToeManager> manager = std::make_unique<TicTacToeManager>(data); 
 	std::unique_ptr<TicTacToe> board;
 
 	while (option == 1)
@@ -70,9 +71,6 @@ int main()
 	cout << "X" << x <<"\n";
 	cout << "O" << o << "\n";
 	cout << "T" << t << "\n";
-
-	TicTacToeData data;
-	TicTacToeManager(data);
 
 	return 0;
 }
